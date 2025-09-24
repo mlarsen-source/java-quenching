@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -105,9 +106,20 @@ public class Practice {
    * @return a frequency map of values in the list
    */
   public static <T> Map<T, Integer> frequencies(ListNode<T> head) {
-      return null;
+    Map<T, Integer> map = new HashMap<>();
+    ListNode<T> current = head;
+    while(current != null) {
+      T key = current.data;
+      if(!map.containsKey(key)) {
+        map.put(key, 1);
+      }
+      else {
+        map.put(key, map.get(key) +1);
+      }
+      current = current.next;
+    }
+    return map;
   }
-
 
   /**
    * Returns the number of levels in the tree.
