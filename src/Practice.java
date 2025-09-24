@@ -2,13 +2,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
-
-import javax.swing.tree.TreeNode;
 
 public class Practice {
   /**
@@ -183,7 +179,24 @@ public class Practice {
    * @return true if the sums are equal, false otherwise
    */
   public static boolean sumMatch(BinaryTreeNode<Integer> root, ListNode<Integer> head) {
-      return false;
+    if (sumBinaryTree(root) == sumLinkedList(head)) return true;
+    return false;
+  }
+
+  public static int sumBinaryTree(BinaryTreeNode<Integer> root) {
+    if(root == null) return 0;
+    return sumBinaryTree(root.left) + sumBinaryTree(root.right) + root.data;
+  }
+
+  public static int sumLinkedList(ListNode<Integer> head) {
+    if(head == null) return 0;
+    ListNode<Integer> current = head;
+    int sum = 0;
+    while(current != null) {
+      sum += current.data;
+      current = current.next;
+    }
+    return sum;
   }
 
   /**
